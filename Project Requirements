@@ -1,0 +1,68 @@
+FUND MY STARTUP
+
+PROJECT REQUIREMENTS:
+1.	User Registration and Authentication:
+•	Allow entrepreneurs and investors to register and create user accounts.
+•	Implement a secure authentication system to ensure user privacy and prevent unauthorized access.
+
+2.	Entrepreneur Features:
+•	Provide a user-friendly interface for entrepreneurs to create and manage their profiles.
+•	Allow entrepreneurs to upload their startup details, including a description, business plan, financial projections, and any other relevant information.
+•	Include options for entrepreneurs to specify the funding amount they are seeking and the percentage of ownership they are willing to offer in return.
+•	Implement a notification system to inform entrepreneurs about investor interest or inquiries.
+
+3.	Investor Features:
+•	Offer investors a search functionality to find startups based on various criteria such as industry, funding amount, or location.
+•	Provide detailed information about each startup, including its description, business plan, financial projections, and the percentage of ownership available for purchase.
+•	Enable investors to express interest in a particular startup and initiate communication with the entrepreneur.
+•	Implement a secure payment gateway to facilitate share purchase transactions.
+
+4.	User Dashboard:
+•	Create separate dashboards for entrepreneurs and investors, displaying relevant information and actions.
+•	Allow entrepreneurs to track investor interest, view messages or inquiries, and manage their startup details.
+•	Provide investors with an overview of their portfolio, including a list of startups they have invested in, share details, and transaction history.
+
+5.	Communication and Messaging:
+•	Implement a messaging system that enables secure communication between entrepreneurs and investors.
+•	Include features such as inbox, sent messages, and notifications for new messages.
+
+6.	Rating and Feedback:
+•	Allow investors to rate and provide feedback on startups they have invested in.
+•	Enable entrepreneurs to respond to investor feedback, creating a feedback loop for continuous improvement.
+
+7.	Admin Panel:
+•	Include an admin panel with appropriate privileges to manage user accounts, verify startup details, and resolve any disputes or issues.
+•	Implement moderation tools to ensure the quality and integrity of the platform.
+
+8.	Security and Privacy:
+•	Implement security measures, such as secure socket layer (SSL) encryption, to protect user data and transactions.
+•	Comply with relevant data protection and privacy regulations, such as the General Data Protection Regulation (GDPR).
+Design REQUIREMENTS
+1.	Home Page:
+•	Header with the website logo, navigation links, and user authentication options (login/register).
+•	Hero section with a catchy headline and a call-to-action button encouraging entrepreneurs to get funding for their startups.
+•	Overview section highlighting the benefits of the platform for both entrepreneurs and investors.
+•	Testimonials or success stories section showcasing the positive experiences of entrepreneurs and investors.
+2.	Entrepreneur Registration and Profile Creation:
+•	Registration page with a form for entrepreneurs to create their accounts.
+•	After registration, direct entrepreneurs to a profile creation page.
+•	Profile creation form with fields such as name, contact information, profile picture, startup name, description, funding amount, and ownership percentage.
+•	Allow entrepreneurs to upload documents such as a business plan, financial projections, and additional startup details.
+3.	Investor Registration and Dashboard:
+•	Registration page with a form for investors to create their accounts.
+•	After registration, redirect investors to their personalized dashboard.
+•	Investor dashboard displaying a list of startups available for investment, search functionality, and filters.
+•	Detailed view of each startup, including its description, funding details, and an option to express interest.
+4.	Messaging and Communication:
+•	Inbox section in the dashboard where entrepreneurs and investors can view and send messages.
+•	Message threads with timestamps and sender/receiver information.
+•	Notification system to alert users about new messages or updates.
+5.	Startup Details and Purchase:
+•	Detailed view of a startup's profile, displaying its description, business plan, financial projections, and ownership percentage available for purchase.
+•	Option for investors to indicate interest and initiate communication with the entrepreneur.
+•	Secure payment gateway integration for share purchase transactions.
+6.	User Dashboards:
+•	Separate dashboards for entrepreneurs and investors accessible after login.
+•	Entrepreneurs' dashboard displaying an overview of their startup details, investor interest, messages, and notifications.
+•	Investors' dashboard showing an overview of their portfolio, invested startups, messages, and notifications.
+
