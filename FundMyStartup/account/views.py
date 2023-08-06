@@ -12,19 +12,19 @@ def registration(request):
         fname = request.POST['fname']
         lname = request.POST['lname']
         age = request.POST['ages']
-        email = request.POST['emails']
+        email = request.POST['email']
         phone = request.POST['phone']
         NID = request.POST['NID']
-        if request.POST['pass1'] == request.POST['pass2']:
-            password = request.POST['password1']
+        if request.POST['password'] == request.POST['password2']:
+            password = request.POST['password']
             user = User.objects.create_user(first_name=fname, last_name=lname, age=age, email=email, phone=phone, NID=NID, password=password)
             user.save()
             messages.success(request, 'You have successfully registered')
-            return redirect('login')
+            return redirect('login.html')
 
         else:
             messages.error(request, 'Password does not match')
-            return redirect('registration')
+            return redirect('registration.html')
 
     else:
         return render(request, 'registration.html')
@@ -39,7 +39,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You have successfully logged in')
-            return redirect('profile')
+            return redirect('index')
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')
@@ -65,8 +65,8 @@ def updateprofile(request):
         user.phone = request.POST['phone']
         user.submits = request.POST['submits']
         user.website = request.POST['website']
-        if request.POST['pass1'] == request.POST['pass2']:
-            user.password = request.POST['pass1']
+        if request.POST['password'] == request.POST['password2']:
+            user.password = request.POST['password']
             user.save()
             messages.success(request, 'You have successfully updated your profile')
             return redirect('profile')

@@ -23,34 +23,16 @@
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Enter your email">
+    <label for="password">Password</label>
+    <input type="password" name = 'password' id="password" placeholder="Enter your password">
+    <input type="submit" value="Login" name="submit" id="submit">
 
-    <div class="wrapper">
-        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
-        <div class="form-box login">
-            <h2>Login</h2>
-            <form action="#">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="email" required>
-                    <label>Email</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" required>
-                    <label>Password</label>
-                </div>
-                <div class="remember forgot">
-                    <label><input type="checkbox">Remember me</label>
-                    <a href="#">Forget Password?</a>
-                </div>
-                <button type="submit" class="btn">Login</button>
-                <div class="login-register"><p>Don't have an account? <a href="#" class="register-link">Register
-                </a>
-                </p>
-                </div>
-            </form>
-        </div>
-    </div>
+
+</form>
 
     <script src="script.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
