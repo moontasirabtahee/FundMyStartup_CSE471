@@ -4,60 +4,77 @@ from django.urls import reverse
 # from .forms import UserLoginForm, UserRegistrationForm
 from django.template.context_processors import csrf
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
+# Write a Registration function for my project
 def registration(request):
     if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            user_form.save()
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        age = request.POST['ages']
+        email = request.POST['emails']
+        phone = request.POST['phone']
+        NID = request.POST['NID']
+        if request.POST['pass1'] == request.POST['pass2']:
+            password = request.POST['password1']
+            user = User.objects.create_user(first_name=fname, last_name=lname, age=age, email=email, phone=phone, NID=NID, password=password)
+            user.save()
+            messages.success(request, 'You have successfully registered')
+            return redirect('login')
 
-            user = auth.authenticate(username=request.POST.get('username'),
-                                     password=request.POST.get('password1'))
+        else:
+            messages.error(request, 'Password does not match')
+            return redirect('registration')
 
-            if user:
-                auth.login(request, user)
-                messages.success(request, "You have successfully registered")
-
-                if request.GET and request.GET['next'] != '':
-                    next = request.GET['next']
-                    return HttpResponseRedirect(next)
-                else:
-                    return redirect('index')
-            else:
-                messages.error(request, "unable to log you in at this time!")
     else:
-        user_form = UserRegistrationForm()
+        return render(request, 'registration.html')
 
-    args = {'user_form': user_form}
-    return render(request, 'register.html', args)
+# Write a Login function for my project
 def login(request):
     if request.method == 'POST':
-        user_form = UserLoginForm(request.POST)
-        if user_form.is_valid():
-            user = auth.authenticate(username=request.POST['username_or_email'],
-                                     password=request.POST['password'])
-
-            if user:
-                auth.login(request, user)
-                messages.error(request, "You have successfully logged in")
-
-                if request.GET and request.GET['next'] != '':
-                    next = request.GET['next']
-                    return HttpResponseRedirect(next)
-                else:
-                    return redirect(reverse('profile'))
-            else:
-                user_form.add_error(None, "Your username or password are incorrect")
+        email = request.POST['email']
+        password = request.POST['password']
+        # user = auth.authenticate(email=email, password=password)
+        user = auth.authenticate(username=email, password=password)
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, 'You have successfully logged in')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Invalid credentials')
+            return redirect('login')
     else:
-        user_form = UserLoginForm()
+        return render(request, 'login.html')
 
-    args = {'user_form': user_form, 'next': request.GET.get('next', '')}
-    return render(request, 'login.html', args)
-
-def updateprofile(request):
-    return render(request,'update.html')
-
+# Write a Logout function for my project
+@login_required(login_url='login')
 def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
-    return redirect(reverse('index'))
+    return redirect('index')
+
+#Write a funtion to update profile info
+@login_required(login_url='login')
+def updateprofile(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST['fname']
+        user.last_name = request.POST['lname']
+        user.age = request.POST['ages']
+        user.email = request.POST['emails']
+        user.phone = request.POST['phone']
+        user.submits = request.POST['submits']
+        user.website = request.POST['website']
+        if request.POST['pass1'] == request.POST['pass2']:
+            user.password = request.POST['pass1']
+            user.save()
+            messages.success(request, 'You have successfully updated your profile')
+            return redirect('profile')
+        else:
+            messages.error(request, 'Password does not match')
+            return redirect('updateprofile')
+    else:
+        return render(request, 'update.html')
+
+
+
