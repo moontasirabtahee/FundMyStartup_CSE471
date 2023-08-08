@@ -1,61 +1,65 @@
+
 <!DOCTYPE html>
+
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UFT=8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewpoint" content="width=device-width, intial-scale=1.0">
-    <title>
-        Website Wtih Registration
-    </title>
-    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
-
-</head>
-
-<body>
-<div class="main">
-<div class="registration">
-        <h2>Register Here</h2>
-
-    <form action="{% url 'login' %}" method="post">
-<!--        csrf token-->
-    {% csrf_token %}
-
-        <label>First Name : </label>
-    <br>
-    <input type="text" name="fname" id="fname" placeholder="Enter your first name">
-    <br><br>
-    <label>Last Name : </label>
-    <br>
-    <input type="text" name="lname" id="lname" placeholder="Enter your last name">
-    <br><br>
-    <label>Your Age : </label>
-    <br>
-    <input type="number" name="age" id="ages" placeholder="How old are you?">
-    <br><br>
-    <label>Email: </label>
-    <br>
-    <input type="email" name="email" id="emails" placeholder="Enter your email">
-    <br><br>
-    <label>Contact number: </label>
-    <br>
-    <input type="text" name="contact number" id="phone" placeholder="Contact number">
-    <br><br>
-    <label>NID number: </label>
-    <br>
-    <input type="text" name="NID" id="NID" placeholder="NID number">
-    <br><br>
-    <label>Password: </label>
-    <br>
-    <input type="text" name="Password" id="password" placeholder="Enter you password">
-    <br><br>
-    <label>Confrim Password: </label>
-    <br>
-    <input type="text" name="Password" id="password2" placeholder="Confrim your password">
-    <br><br>
-    <input type="submit" value="Submit" name="submit" id="submit">
-    </form>
-</div>
-</div>
-</body>
 <html>
+<head>
+    <title>Registration - Fund My Startup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+</head>
+<body>
+    <div class="banner">
+    <a href="#">Home</a>
+    <a href="#">Login</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+{#    <a href="#">Registration</a>#}
+</div>
+
+    <div class="registration-container">
+        <h1>Registration</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="user-type">I am:</label>
+            <select id="user-type" name="user-type" required>
+                <option value="" disabled selected>Select</option>
+                <option value="investor">Investor</option>
+                <option value="entrepreneur">Entrepreneur</option>
+            </select>
+
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required>
+
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required>
+
+            <label for="date-of-birth">Date of Birth:</label>
+            <input type="date" id="date-of-birth" name="date-of-birth" required>
+
+            <label for="nid-number">NID Number:</label>
+            <input type="text" id="nid-number" name="nid-number" required>
+
+            <label for="nid-image">NID Image:</label>
+            <input type="file" id="nid-image" name="nid-image" accept="image/*" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+</body>
+</html>

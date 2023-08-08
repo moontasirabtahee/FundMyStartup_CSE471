@@ -2,59 +2,60 @@
 {% load static %}
 <html>
 <head>
-  <title>My Website</title>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css' %}">
+    <title>Fund My Startup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 </head>
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href= "{% url 'login' %}">Login</a> </li>
-        <li><a href= "{% url 'registration' %}">Signup</a> </li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section id="home">
-      <h1>Welcome to My Website</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a eros a mi fermentum sagittis.</p>
+<div class="banner">
+    <a href="#">Home</a>
+    <a href="#">Login</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+    <a href="#">Registration</a>
+</div>
+
+<div class="main-section">
+    <section class="fund-my-startup">
+        <h1>Fund My Startup</h1>
     </section>
-    <section id="about">
-      <h2>About Us</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a eros a mi fermentum sagittis.</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a eros a mi fermentum sagittis.</p>
+
+    <section class="about-us">
+        <h2>About Us</h2>
+        <p>We are a platform that connects entrepreneurs with investors. We help entrepreneurs raise money to fund their
+            startups.</p>
     </section>
-    <section id="services">
-      <h2>Our Services</h2>
-      <ul>
-        <li>Lorem ipsum dolor sit amet</li>
-        <li>Consectetur adipiscing elit</li>
-        <li>Sed a eros a mi fermentum sagittis</li>
-        <li>Nulla facilisi</li>
-      </ul>
+
+    <section class="motivation">
+        <h2>Motivation</h2>
+        <p>We believe that everyone has the potential to be an entrepreneur. We want to help people turn their dreams
+            into reality.</p>
     </section>
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        <button type="submit">Send</button>
-      </form>
+
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions, please contact us. We would be happy to help you.</p>
+        <p>Email: <a href="mailto:info@fundmystartup.com">info@fundmystartup.com</a></p>
+        <p>Phone: +1 212 555 1212</p>
     </section>
-  </main>
-  <footer>
-    <p>&copy; 2023 Fund My Startup Website. All rights reserved.</p>
-  </footer>
+
+    <section class="feedback">
+        <h2>Feedback</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
