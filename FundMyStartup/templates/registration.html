@@ -10,7 +10,7 @@
 <body>
     <div class="banner">
     <a href="#">Home</a>
-    <a href="#">Login</a>
+    <a href="{% url 'login' %}">Login</a>
     <a href="#">About Us</a>
     <a href="#">Contact</a>
 {#    <a href="#">Registration</a>#}
@@ -20,18 +20,21 @@
         <h1>Registration</h1>
         <form action="" method="post">
             {% csrf_token %}
-            <label for="user-type">I am:</label>
-            <select id="user-type" name="user-type" required>
+            <label for="user_type">I am:</label>
+            <select id="user_type" name="user_type" required>
                 <option value="" disabled selected>Select</option>
                 <option value="investor">Investor</option>
                 <option value="entrepreneur">Entrepreneur</option>
             </select>
 
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first-name" required>
+            <label for="username">Username :</label>
+            <input type="text" id="username" name="username" required>
 
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last-name" required>
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
@@ -42,20 +45,20 @@
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required>
 
-            <label for="date-of-birth">Date of Birth:</label>
-            <input type="date" id="date-of-birth" name="date-of-birth" required>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
 
-            <label for="nid-number">NID Number:</label>
-            <input type="text" id="nid-number" name="nid-number" required>
+            <label for="nid_number">NID Number:</label>
+            <input type="text" id="nid_number" name="nid_number" required>
 
-            <label for="nid-image">NID Image:</label>
-            <input type="file" id="nid-image" name="nid-image" accept="image/*" required>
+            <label for="nid_image">NID Image:</label>
+            <input type="file" id="nid_image" name="nid_image" accept="image/*" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
             <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
+            <input type="password" id="password2" name="password2" required>
 
             <input type="submit" value="Register">
         </form>

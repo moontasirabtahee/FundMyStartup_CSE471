@@ -30,13 +30,14 @@ body {
 }
 
 .fund-my-startup {
-    /*background-image: url("https://images.unsplash.com/photo-1588856122867-363b0aa7f598?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80");*/
+    /*background-image: url("https://imagesunsplash.com/photo-1588856122867-363b0aa7f598?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1073&q=80");*/
+    background-image: url("https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
     background-size: cover;
     background-position: center;
     text-align: center;
     background-color: black;
     padding: 100px 0;
-    color: #17e30f;
+    color: #d96767;
 
     width: 100vw;
     height: 30vh;

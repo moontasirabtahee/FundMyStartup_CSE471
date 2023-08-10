@@ -11,28 +11,35 @@
     <a href="#">Login</a>
     <a href="#">About Us</a>
     <a href="#">Contact</a>
-    <a href="#">Registration</a>
+    <a href={% url 'registration' %}>Registration</a>
 </div>
 
 <div class="main-section">
     <section class="fund-my-startup">
         <h1>Fund My Startup</h1>
+        <h3>We help entrepreneurs raise money to fund their startups.</h3>
+        <a href="#" style="color: aliceblue">Learn More</a>
+
     </section>
 
     <section class="about-us">
         <h2>About Us</h2>
         <p>We are a platform that connects entrepreneurs with investors. We help entrepreneurs raise money to fund their
             startups.</p>
+        <p>We help investors find startups to invest in. We help investors find startups to invest in.</p>
+        <p>They communicate with each other</p>
     </section>
 
     <section class="motivation">
         <h2>Motivation</h2>
         <p>We believe that everyone has the potential to be an entrepreneur. We want to help people turn their dreams
             into reality.</p>
+
     </section>
 
     <section class="contact">
         <h2>Contact</h2>
+        <p>We would love to hear from you.</p>
         <p>If you have any questions, please contact us. We would be happy to help you.</p>
         <p>Email: <a href="mailto:info@fundmystartup.com">info@fundmystartup.com</a></p>
         <p>Phone: +1 212 555 1212</p>
@@ -40,6 +47,7 @@
 
     <section class="feedback">
         <h2>Feedback</h2>
+        <p>Do you have any questions? Do you have any suggestions? Do you have any feedback?</p>
         <form action="" method="post">
             {% csrf_token %}
             <label for="name">Name:</label>

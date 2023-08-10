@@ -1,80 +1,89 @@
-from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib import messages, auth
-from django.urls import reverse
-# from .forms import UserLoginForm, UserRegistrationForm
-from django.template.context_processors import csrf
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+from django.contrib import messages
+from .models import profile
 from django.contrib.auth.models import User
 
-# Write a Registration function for my project
+
 def registration(request):
     if request.method == 'POST':
+
+        username = request.POST['username']
+        user_type = request.POST['user_type', False]
         fname = request.POST['fname']
         lname = request.POST['lname']
-        age = request.POST['ages']
         email = request.POST['email']
         phone = request.POST['phone']
-        NID = request.POST['NID']
+        address = request.POST['address']
+        dob = request.POST['dob']
+        nid_number = request.POST['nid_number']
+        nid_image = request.POST['nid_image']
+
         if request.POST['password'] == request.POST['password2']:
             password = request.POST['password']
-            user = User.objects.create_user(first_name=fname, last_name=lname, age=age, email=email, phone=phone, NID=NID, password=password)
+            user = User.objects.create_user(username=username, password=password, email=email, first_name=fname,
+                                            last_name=lname)
             user.save()
-            messages.success(request, 'You have successfully registered')
-            return redirect('login.html')
-
+            pro = profile.objects.create(user=user, user_type=user_type, phone=phone, address=address, dob=dob,
+                                         nid_number=nid_number, nid_image=nid_image)
+            pro.save()
+            print('user created')
+            messages.success(request, 'Account created successfully')
+            return render(request, 'login.html')
         else:
-            messages.error(request, 'Password does not match')
-            return redirect('registration.html')
 
+            messages.error(request, 'Password does not match')
+            return render(request, 'registration.html')
     else:
         return render(request, 'registration.html')
 
-# Write a Login function for my project
+
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
-        # user = auth.authenticate(email=email, password=password)
-        user = auth.authenticate(username=email, password=password)
-        if user is not None:
-            auth.login(request, user)
-            messages.success(request, 'You have successfully logged in')
-            return redirect('index')
+
+        if User.objects.filter(username=username).exists():
+            print('user found')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                print('user logged in')
+                return render(request, 'investorProfile.html')
+            else:
+                print('user not found or password does not match')
+                messages.error(request, 'Invalid username or password')
+                return render(request, 'login.html')
         else:
-            messages.error(request, 'Invalid credentials')
-            return redirect('login')
+            print('user not found ')
+            messages.error(request, 'Invalid username or password')
+            return render(request, 'login.html')
+
     else:
         return render(request, 'login.html')
 
-# Write a Logout function for my project
-@login_required(login_url='login')
-def logout(request):
-    auth.logout(request)
-    messages.success(request, 'You have successfully logged out')
-    return redirect('index')
 
-#Write a funtion to update profile info
 @login_required(login_url='login')
 def updateprofile(request):
     if request.method == 'POST':
-        user = request.user
+        user = User.objects.get(username=request.user.username)
         user.first_name = request.POST['fname']
         user.last_name = request.POST['lname']
-        user.age = request.POST['ages']
-        user.email = request.POST['emails']
-        user.phone = request.POST['phone']
-        user.submits = request.POST['submits']
-        user.website = request.POST['website']
-        if request.POST['password'] == request.POST['password2']:
-            user.password = request.POST['password']
-            user.save()
-            messages.success(request, 'You have successfully updated your profile')
-            return redirect('profile')
-        else:
-            messages.error(request, 'Password does not match')
-            return redirect('updateprofile')
+        user.email = request.POST['email']
+        user.save()
+
+        profile.objects.filter(user=request.user).update(phone=request.POST['phone'], address=request.POST['address'],
+                                                         dob=request.POST['dob'], nid_number=request.POST['nid_number'],
+                                                         nid_image=request.FILES['nid_image'])
+        messages.success(request, 'Profile updated successfully')
+        return render(request, 'updateprofile.html')
     else:
-        return render(request, 'update.html')
+        return render(request, 'updateprofile.html')
 
 
-
+def logout(request):
+    auth_logout()
+    return render(request, 'login.html')
