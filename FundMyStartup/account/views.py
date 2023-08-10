@@ -12,7 +12,7 @@ def registration(request):
     if request.method == 'POST':
 
         username = request.POST['username']
-        user_type = request.POST['user_type', False]
+        user_type = request.POST['user_type']
         fname = request.POST['fname']
         lname = request.POST['lname']
         email = request.POST['email']
@@ -34,7 +34,7 @@ def registration(request):
             messages.success(request, 'Account created successfully')
             return render(request, 'login.html')
         else:
-
+            print('password does not match')
             messages.error(request, 'Password does not match')
             return render(request, 'registration.html')
     else:
@@ -52,7 +52,16 @@ def login(request):
             if user is not None:
                 auth_login(request, user)
                 print('user logged in')
-                return render(request, 'investorProfile.html')
+                if profile.objects.filter(user=request.user).exists():
+                    print('user profile found')
+                    user_type = profile.objects.get(user=request.user).user_type
+                    print(user_type)
+                    if user_type == 'investor':
+                        return render(request, 'investorProfile.html')
+                    elif user_type == 'entrepreneur':
+                        return render(request, 'entrepreneur_Profile.html')
+
+
             else:
                 print('user not found or password does not match')
                 messages.error(request, 'Invalid username or password')
@@ -85,5 +94,5 @@ def updateprofile(request):
 
 
 def logout(request):
-    auth_logout()
+    auth_logout(request)
     return render(request, 'login.html')
