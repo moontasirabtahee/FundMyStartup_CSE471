@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+    <title>Entrepreneur Profile - Fund My Startup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/startup.css' %}">
+</head>
+<body>
+
+<div class="banner">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+    <a href="#">Profile</a>
+    <a href="#">Message</a>
+    <a href="{% url 'logout' %}">Log Out</a>
+
+</div>
+<div class="profile-container">
+    <h1>Startup Entry</h1>
+    <form>
+        <label for="title">Title :</label>
+            <input type="text" id="title" name="title" required>
+        <label for="Equity">Equity :</label>
+            <input type="text" id="Equity" name="Equity" required>
+        <label for="Sales">Sales(Last Year) :</label>
+            <input type="text" id="Sales" name="Sales" required>
+        <label for="owner">Owner(s) :</label>
+            <input type="text" id="Owner" name="Owner" required>
+        <label for="profit">Profit-Margin :</label>
+            <input type="text" id="Profit" name="Profit" required>
+        <label for="Debts">Debts :</label>
+            <input type="text" id="Debts" name="Debts" required>
+        <label for="Funding">Fundings Required : </label>
+            <input type="text" id="Funding" name="Funding">
+
+
+
+            <input type="submit" value="Register">
+
+    </form>
+
+
+
+</div>
+</div>
+</body>
+</html>
