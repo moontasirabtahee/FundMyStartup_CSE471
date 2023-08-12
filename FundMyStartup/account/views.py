@@ -74,6 +74,10 @@ def login(request):
     else:
         return render(request, 'login.html')
 
+def contact(request):
+    return render(request, 'contact.html')
+
+
 
 @login_required(login_url='login')
 def updateprofile(request):

@@ -8,9 +8,9 @@
 <body>
 <div class="banner">
     <a href="#">Home</a>
-    <a href="#">Login</a>
+    <a href="{% url 'login' %}">Login</a>
     <a href="#">About Us</a>
-    <a href="#">Contact</a>
+    <a href="{% url 'contact' %}">Contact</a>
     <a href="{% url 'registration' %}">Registration</a>
 </div>
 
@@ -35,14 +35,6 @@
         <p>We believe that everyone has the potential to be an entrepreneur. We want to help people turn their dreams
             into reality.</p>
 
-    </section>
-
-    <section class="contact">
-        <h2>Contact</h2>
-        <p>We would love to hear from you.</p>
-        <p>If you have any questions, please contact us. We would be happy to help you.</p>
-        <p>Email: <a href="mailto:info@fundmystartup.com">info@fundmystartup.com</a></p>
-        <p>Phone: +1 212 555 1212</p>
     </section>
 
     <section class="feedback">
