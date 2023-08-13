@@ -6,7 +6,13 @@
     <title>Registration - Fund My Startup</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
 </head>
+
 <body>
+ {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
     <div class="banner">
     <a href="#">Home</a>
     <a href="{% url 'login' %}">Login</a>
@@ -14,11 +20,7 @@
     <a href="#">Contact</a>
 {#    <a href="#">Registration</a>#}
 </div>
-  {% if messages %}
-        {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
+
     <div class="registration-container">
         <h1>Registration</h1>
         <form action="" method="post">

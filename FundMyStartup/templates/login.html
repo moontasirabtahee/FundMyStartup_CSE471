@@ -7,7 +7,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
 <body>
-
+ {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
 <div class="banner">
     <a href="#">Home</a>
 {#    <a href="#">Login</a>#}
@@ -16,11 +20,7 @@
     <a href="{% url 'registration' %}">Registration</a>
 </div>
 
-  {% if messages %}
-        {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
+
 <div class="login-container">
     <h1>Login</h1>
     <form action="" method="post">

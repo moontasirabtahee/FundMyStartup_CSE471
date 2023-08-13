@@ -5,6 +5,11 @@
     <title>Fund My Startup</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 </head>
+  {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
 <body>
 <div class="banner">
     <a href="#">Home</a>
@@ -13,11 +18,7 @@
     <a href="{% url 'contact' %}">Contact</a>
     <a href="{% url 'registration' %}">Registration</a>
 </div>
-  {% if messages %}
-        {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
+
 <div class="main-section">
     <section class="fund-my-startup">
         <h1>Fund My Startup</h1>
