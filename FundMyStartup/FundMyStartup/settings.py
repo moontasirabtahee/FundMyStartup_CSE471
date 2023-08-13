@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'dashboard',
     'entrepreneur',
     'investor',
-    'feedback',
     'FundMyStartup',
     'account',
 ]
