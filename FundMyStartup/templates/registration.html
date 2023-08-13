@@ -14,7 +14,11 @@
     <a href="#">Contact</a>
 {#    <a href="#">Registration</a>#}
 </div>
-
+  {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
     <div class="registration-container">
         <h1>Registration</h1>
         <form action="" method="post">
