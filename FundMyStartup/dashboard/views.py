@@ -14,7 +14,7 @@ def Createstartup(request):
         Debts= request.POST['Debts']
         user = request.user
 
-        start = startup.objects.create(user = user ,title=title, Equity=Equity, funding=funding, Sales=Sales, owner=owner, profit=profit, debts=Debts)
+        start = startup(user = user ,title=title, Equity=Equity, funding=funding, Sales=Sales, owner=owner, profit=profit, debts=Debts)
         start.save()
         print('startup created')
         return render(request, 'entrepreneur_Profile.html')

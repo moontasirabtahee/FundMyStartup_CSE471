@@ -32,7 +32,7 @@ def registration(request):
             pro.save()
             print('user created')
             messages.success(request, 'Account created successfully')
-            return render(request, 'login.html')
+            return render(request, 'registration.html')
         else:
             print('password does not match')
             messages.error(request, 'Password does not match')
