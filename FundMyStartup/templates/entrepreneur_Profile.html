@@ -37,13 +37,13 @@
 
     <section class="startup-details">
         <h2>Startup Details</h2>
-        <h3>{{ title }}</h3>
-        <p>Equity: {{ equity }}</p>
-        <p>Sales: {{ sales }}</p>
-        <p>Owner(s): {{ owner }}</p>
-        <p>Profit-Margin: {{ profit_margin }}</p>
-        <p>Debts: {{ debts }}</p>
-        <p>Fundings Required: {{ funding_required }}</p>
+        <h3>{{ context.title }}</h3>
+        <p>Equity: {{ context.equity }}</p>
+        <p>Sales: {{ context.sales }}</p>
+        <p>Owner(s): {{ context.owner }}</p>
+        <p>Profit-Margin: {{ context.profit_margin }}</p>
+        <p>Debts: {{ context.debts }}</p>
+        <p>Fundings Required: {{ context.funding_required }}</p>
         <!-- Add more details here -->
     </section>
 </div>
