@@ -20,10 +20,12 @@ def checkview(request):
     username = request.POST['username']
 
     if Chat.objects.filter(name=chat).exists():
+        print('i')
         return redirect('/'+chat+'/?username='+username)
     else:
-        new_chat = chat.objects.create(name=chat)
+        new_chat = Chat.objects.create(name=chat)
         new_chat.save()
+        print('j')
         return redirect('/'+chat+'/?username='+username)
 
 def send(request):
