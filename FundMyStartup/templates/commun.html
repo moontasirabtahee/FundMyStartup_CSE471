@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+</head>
+<body>
+
+<div class="banner">
+    <a href="#">Home</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+    <a href="#">Profile</a>
+    <a href="#">Message</a>
+    <a href="{% url 'logout' %}">Log Out</a>
+
+</div>
+<div align="center">
+    <h2>Chat</h2>
+</div>
+
+
+<div class="container">
+    <form id="post-form" method="POST" action="checkview">
+        {% csrf_token %}
+        <label>Room Name</label>
+        <input type="text" name="chat_name" id="chat_name" width="100px" />
+        <label>Username</label>
+        <input type="text" name="username" id="username" width="100px" />
+        <input type="submit" value="Enter Room">
+    </form>
+</div>
+</body>
+</html>

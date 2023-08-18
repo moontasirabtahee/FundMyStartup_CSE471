@@ -21,6 +21,12 @@ def Createstartup(request):
     else:
         return render(request, 'startup.html')
 
+def entreprePro(request):
+    current_user=request.user
+    mydata = startup.objects.all(user=current_user)
+    context = {'mydata': mydata}
+    return render(request, 'entrepreneur_Profile.html', context)
+
 
 
 
