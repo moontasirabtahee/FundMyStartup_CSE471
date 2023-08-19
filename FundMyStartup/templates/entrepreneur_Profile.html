@@ -16,7 +16,7 @@
     <a href="#">Message</a>
     <a href="{% url 'logout' %}">Log Out</a>
     <a href="{% url 'startup' %}">Create startup</a>
-    <a href="{% url 'chat' %}">Chat</a>
+    <a href="{% url 'chats' %}">Chat</a>
   {% if messages %}
         {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}">{{ message }}</div>
