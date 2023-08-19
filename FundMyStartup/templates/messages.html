@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{% static 'css/messages.css' %}">
 
     </head>
+
 	<body>
     {% if user.is_authenticated %}
         <h1 style="text-align: end; padding-right: 10px">Logged in as : {{ user.username }}</h1>
@@ -32,7 +33,7 @@
 					</div>
 					<div class="card-body contacts_body">
 						<ui class="contacts">
-                            {% for thread in Threads %}
+                            {% for thread in Thread %}
                                 <li class="{% if forloop.first %}active{% endif %} contact-li" chat-id="chat_{{ thread.id }}" style="cursor: pointer">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
