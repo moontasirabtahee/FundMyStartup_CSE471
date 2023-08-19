@@ -26,7 +26,31 @@
 
         <section class="notification">
             <h2>Notifications</h2>
-            <!-- Add notification content here -->
+            {% for i in startups %}
+            <div>
+            <div class="startup-details-container">
+                <div class="startup-details-item">
+                    <h3>Startup Title : {{i.title}}</h3>
+                </div>
+                <div class="startup-details-item">
+                    <h3>Equity : {{i.Equity}}</h3>
+
+                </div>
+                <div class="startup-details-item">
+                    <h3>Funding : {{i.funding}}</h3>
+
+                </div>
+                <div class="startup-details-item">
+                    <h3>Sales : {{i.Sales}}</h3>
+                </div>
+                <div class="startup-details-item">
+                    <h3>Owner : {{i.owner}}</h3>
+
+                </div>
+                    <-- need a button to show interested -->
+                </div>
+                <hr>
+            {% endfor %}
         </section>
 
         <section class="message-notification">
