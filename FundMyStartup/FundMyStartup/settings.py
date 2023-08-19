@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'investor',
     'FundMyStartup',
     'account',
-]
+ ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

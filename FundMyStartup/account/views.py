@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
@@ -32,11 +32,11 @@ def registration(request):
             pro.save()
             print('user created')
             messages.success(request, 'Account created successfully')
-            return render(request, 'registration.html')
+            return redirect('login')
         else:
             print('password does not match')
             messages.error(request, 'Password does not match')
-            return render(request, 'registration.html')
+            return redirect('registration')
     else:
         return render(request, 'registration.html')
 
@@ -57,19 +57,18 @@ def login(request):
                     user_type = profile.objects.get(user=request.user).user_type
                     print(user_type)
                     if user_type == 'investor':
-                        return render(request, 'investorProfile.html')
+                        return redirect('investor_Profile')
                     elif user_type == 'entrepreneur':
-                        return render(request, 'entrepreneur_Profile.html')
-
+                        return redirect('entrepreneur_Profile')
 
             else:
                 print('user not found or password does not match')
                 messages.error(request, 'Invalid username or password')
-                return render(request, 'login.html')
+                return redirect('login')
         else:
             print('user not found ')
             messages.error(request, 'Invalid username or password')
-            return render(request, 'login.html')
+            return redirect('login')
 
     else:
         return render(request, 'login.html')
@@ -92,11 +91,11 @@ def updateprofile(request):
                                                          dob=request.POST['dob'], nid_number=request.POST['nid_number'],
                                                          nid_image=request.FILES['nid_image'])
         messages.success(request, 'Profile updated successfully')
-        return render(request, 'updateprofile.html')
+        return redirect('updateprofile')
     else:
         return render(request, 'updateprofile.html')
 
 
 def logout(request):
     auth_logout(request)
-    return render(request, 'login.html')
+    return redirect('login')

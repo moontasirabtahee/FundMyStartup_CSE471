@@ -25,8 +25,9 @@ urlpatterns = [
     path('',views.index,name= 'index'),
     path('account/', include('account.urls')),
     path('investor/', include('investor.urls'), name='investor'),
-    path('entrepreneur/', include('entrepreneur.urls')),
+    path('entrepreneur/', include('entrepreneur.urls') , name='entrepreneur'),
     path('dashboard/',include('dashboard.urls')),
     path('communication/',include('communication.urls')),
+
 
 ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import feedback
 # Create your views here.
 from django.contrib import messages
@@ -13,6 +13,6 @@ def index(request):
         back.save()
         messages.success(request, 'Thank you for your feedback')
         print('feedback saved')
-        return render(request, 'index.html')
+        return redirect('index')
     else:
         return render(request, 'index.html')
