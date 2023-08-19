@@ -13,11 +13,9 @@
     {% endif %}
 <body>
 <div class="banner">
-    <a href="#">Home</a>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="#">About Us</a>
-    <a href="{% url 'contact' %}">Contact</a>
-    <a href="{% url 'registration' %}">Registration</a>
+    <a href="{% url 'adminDashboard' %}">Home</a>
+
+    <a href="{% url 'logout' %}">logout</a>
 </div>
 
 <main>
@@ -50,7 +48,7 @@
             <td>{{ user.first_name }}</td>
             <td>{{ user.last_name }}</td>
             <td>{{ user.email }}</td>
-<!--            now for each profile which has same user-->
+<!--            now for each profile which has same user        -->
             <td>{{ user.profile.user_type }}</td>
             <td>{{ user.profile.phone }}</td>
             <td>{{ user.profile.address }}</td>

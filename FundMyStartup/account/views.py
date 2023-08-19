@@ -64,7 +64,7 @@ def login(request):
                     if user_type == 'investor':
                         return redirect('investor_Profile')
                     elif user_type == 'entrepreneur':
-                        return redirect('entrepreneur_Profile')
+                        return redirect('entreprePro')
 
             else:
                 print('user not found or password does not match')

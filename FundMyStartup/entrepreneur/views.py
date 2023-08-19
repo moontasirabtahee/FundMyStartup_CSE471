@@ -24,12 +24,11 @@ def Createstartup(request):
         return render(request, 'startup.html')
 
 
-
-
-
-
 @login_required(login_url='login')
 def entreprePro(request):
-    mydata = startup.objects.filter(user=request.user)
-    context = {'mydata': mydata}
-    return render(request, 'entrepreneur_Profile.html', context)
+    if startup.objects.filter(user=request.user).exists():
+        start = startup.objects.filter(user=request.user)
+        print(start)
+        return render(request, 'entrepreneur_Profile.html', {'mydata': start})
+    else:
+        return redirect('startup')
