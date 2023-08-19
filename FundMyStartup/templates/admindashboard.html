@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Fund My Startup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admindashboard.css' %}">
+</head>
+  {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+<body>
+<div class="banner">
+    <a href="#">Home</a>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="#">About Us</a>
+    <a href="{% url 'contact' %}">Contact</a>
+    <a href="{% url 'registration' %}">Registration</a>
+</div>
+
+<main>
+    <section id="dashboard">
+        <h1>Dashboard</h1>
+        <p>This is the admin dashboard. You can manage all aspects of the website from here.</p>
+    </section>
+
+    <section id="users">
+        <h2>Users</h2>
+
+        <table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>User Type</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>DOB</th>
+            <th>NID Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+<!--            now for each profile which has same user-->
+            <td>{{ user.profile.user_type }}</td>
+            <td>{{ user.profile.phone }}</td>
+            <td>{{ user.profile.address }}</td>
+            <td>{{ user.profile.dob }}</td>
+            <td>{{ user.profile.nid_number }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    </section>
+
+    <section id="Feedback">
+        <h2>Feedback</h2>
+         <table>
+            <thead>
+                <tr>
+                    <th>Feedback</th>
+                    <th>Email</th>
+                    <th>By</th>
+                </tr>
+            </thead>
+            <tbody>
+            {%for feedback in feedbackl%}
+                <tr>
+
+                    <td>{{feedback.feedback}}</td>
+                    <td>{{feedback.email}}</td>
+                    <td>{{feedback.name}}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="startupList">
+        <h2>Startup Lists</h2>
+         <table>
+            <thead>
+                <tr>
+                    <th>Startup Name</th>
+                    <th>Startup Owner</th>
+                    <th>Startup Equity</th>
+                    <th>Startup Funding</th>
+                    <th>Startup Sales</th>
+                    <th>Startup Profit</th>
+                    <th>Startup Debts</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            {% for startup in startups %}
+                <tr>
+                    <td>{{ startup.title }}</td>
+                    <td>{{ startup.owner }}</td>
+                    <td>{{ startup.Equity }}</td>
+                    <td>{{ startup.funding }}</td>
+                    <td>{{ startup.Sales }}</td>
+                    <td>{{ startup.profit }}</td>
+                    <td>{{ startup.debts }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+</main>
+
+<footer>
+    <p>Copyright &copy; 2023 Fund My Startup</p>
+</footer>
+
+</body>
+</html>

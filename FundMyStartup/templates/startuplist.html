@@ -1,0 +1,28 @@
+{% block startups%}
+        <table>
+            <thead>
+                <tr>
+                    <td>Startup Name</td>
+                    <td>Startup Owner</td>
+                    <td>Startup Equity</td>
+                    <td>Startup Funding</td>
+                    <td>Startup Sales</td>
+                    <td>Startup Profit</td>
+                    <td>Startup Debts</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for startup in startups %}
+                <tr>
+                    <td>{{ startup.title }}</td>
+                    <td>{{ startup.owner }}</td>
+                    <td>{{ startup.Equity }}</td>
+                    <td>{{ startup.funding }}</td>
+                    <td>{{ startup.Sales }}</td>
+                    <td>{{ startup.profit }}</td>
+                    <td>{{ startup.debts }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endblock %}

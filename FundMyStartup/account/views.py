@@ -49,7 +49,12 @@ def login(request):
         if User.objects.filter(username=username).exists():
             print('user found')
             user = authenticate(username=username, password=password)
+
             if user is not None:
+                if user.is_superuser:
+                    print('admin logged in')
+                    auth_login(request, user)
+                    return redirect('adminLogin')
                 auth_login(request, user)
                 print('user logged in')
                 if profile.objects.filter(user=request.user).exists():
