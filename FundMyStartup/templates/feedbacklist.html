@@ -1,0 +1,23 @@
+
+         {% block feedbacklist%}
+        <table>
+            <thead>
+                <tr>
+                    <th>Feedback</th>
+                    <th>Email</th>
+                    <th>By</th>
+                </tr>
+            </thead>
+            <tbody>
+            {%for feedback in feedbackl%}
+                <tr>
+
+                    <td>{{feedback.feedback}}</td>
+                    <td>{{feedback.email}}</td>
+                    <td>{{feedback.name}}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% endblock %}

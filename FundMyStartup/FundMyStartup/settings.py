@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'investor',
     'FundMyStartup',
     'account',
+    'customadmin'
  ]
 
 MIDDLEWARE = [

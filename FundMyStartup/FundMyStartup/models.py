@@ -7,6 +7,7 @@ class feedback(models.Model):
     email = models.EmailField()
     feedback = models.TextField()
 
+
     def __str__(self):
         return self.name
 
