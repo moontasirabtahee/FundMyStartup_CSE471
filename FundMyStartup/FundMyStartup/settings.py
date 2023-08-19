@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'investor',
     'FundMyStartup',
     'account',
+    'channels'
  ]
 
 MIDDLEWARE = [
@@ -73,7 +74,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'FundMyStartup.wsgi.application'
+ASGI_APPLICATION = 'FundMyStartup.asgi.application'
+#WSGI_APPLICATION = 'FundMyStartup.wsgi.application'
 
 
 # Database
