@@ -9,7 +9,7 @@
 <body>
 
 <div class="banner">
-    <a href="#">Home</a>
+    <a href="{% url 'entreprePro' %}">Home</a>
     <a href="#">About Us</a>
     <a href="#">Contact</a>
     <a href="#">Profile</a>
@@ -38,10 +38,38 @@
 
     <section class="startup-details">
         <h2>Startup Details</h2>
-        <p>
-            {{ mydata.title}}
-        </p>
+{% for i in mydata %}
+        <div class="startup-details-container">
+            <div class="startup-details-item">
+                <h3>Startup Title : {{i.title}}</h3>
+            </div>
+            <div class="startup-details-item">
+                <h3>Equity : {{i.Equity}}</h3>
 
+            </div>
+            <div class="startup-details-item">
+                <h3>Funding : {{i.funding}}</h3>
+
+            </div>
+            <div class="startup-details-item">
+                <h3>Sales : {{i.Sales}}</h3>
+            </div>
+            <div class="startup-details-item">
+                <h3>Owner : {{i.owner}}</h3>
+
+            </div>
+            <div class="startup-details-item">
+                <h3>Profit : {{i.profit}} </h3>
+
+            </div>
+            <div class="startup-details-item">
+                <h3>Debts : {{i.debts}}</h3>
+            </div>
+        </div>
+<hr>
+        <br>
+        <hr>
+        {% endfor %}
     </section>
 </div>
 </body>
