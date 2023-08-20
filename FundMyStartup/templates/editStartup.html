@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+    <title>Entrepreneur Profile - Fund My Startup</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/startup.css' %}">
+</head>
+<body>
+ {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+<div class="banner">
+    <a href="{% url 'entreprePro' %}">Home</a>
+    <a href="{% url 'contact' %}">Contact</a>
+    <a href="{% url 'entreprePro' %}">Profile</a>
+    <a href="#">Message</a>
+    <a href="{% url 'logout' %}">Log Out</a>
+
+</div>
+
+Edit startup:
+<div class="profile-container">
+    <h1>Startup Profile</h1>
+{% for startup in startups %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{startup.title}}" required>
+
+        <label for="Equity">Equity:</label>
+        <input type="text" id="Equity" name="Equity" value="{{startup.Equity}}" required>
+
+        <label for="funding">Funding:</label>
+        <input type="text" id="funding" name="funding" value="{{startup.funding}}" required>
+
+
+<label for="profit">Profit:</label>
+        <input type="text" id="profit" name="profit" value="{{startup.profit}}" required>
+
+        <label for="Sales">Sales:</label>
+        <input type="text" id="Sales" name="Sales" value="{{startup.Sales}}" required>
+
+        <label for="owner">Owner:</label>
+        <input type="text" id="owner" name="owner" value="{{startup.owner}}" required>
+
+        <label for="debts">Debts:</label>
+        <input type="text" id="debts" name="debts" value="{{startup.debts}}" required>
+
+
+        <input type="submit" value="Edit">
+{% endfor %}
+
+    </form>
+
+
+
+
+
+</div>
+</div>
+</body>
+</html>

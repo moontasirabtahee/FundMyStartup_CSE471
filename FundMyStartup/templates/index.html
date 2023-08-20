@@ -12,9 +12,9 @@
     {% endif %}
 <body>
 <div class="banner">
-    <a href="#">Home</a>
+    <a href="{% url 'index' %}">Home</a>
     <a href="{% url 'login' %}">Login</a>
-    <a href="#">About Us</a>
+    <a href="#about-us">About Us</a>
     <a href="{% url 'contact' %}">Contact</a>
     <a href="{% url 'registration' %}">Registration</a>
 </div>
@@ -23,11 +23,11 @@
     <section class="fund-my-startup">
         <h1>Fund My Startup</h1>
         <h3>We help entrepreneurs raise money to fund their startups.</h3>
-        <a href="#" style="color: aliceblue">Learn More</a>
+        <a href="#about-us" style="color: aliceblue">Learn More</a>
 
     </section>
 
-    <section class="about-us">
+    <section class="about-us" id="about-us">
         <h2>About Us</h2>
         <p>We are a platform that connects entrepreneurs with investors. We help entrepreneurs raise money to fund their
             startups.</p>

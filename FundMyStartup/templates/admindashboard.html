@@ -39,6 +39,7 @@
             <th>Address</th>
             <th>DOB</th>
             <th>NID Number</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -54,6 +55,9 @@
             <td>{{ user.profile.address }}</td>
             <td>{{ user.profile.dob }}</td>
             <td>{{ user.profile.nid_number }}</td>
+
+            <td><a href="{% url 'deleteUser' user.id %}">Delete</a></td>
+            <td><a href="{% url 'editUser' user.id %}">Edit</a></td>
         </tr>
         {% endfor %}
     </tbody>
@@ -69,6 +73,7 @@
                     <th>Feedback</th>
                     <th>Email</th>
                     <th>By</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,6 +83,8 @@
                     <td>{{feedback.feedback}}</td>
                     <td>{{feedback.email}}</td>
                     <td>{{feedback.name}}</td>
+                    <td><a href="{% url 'deleteFeedback' feedback.id %}">Delete</a></td>
+
 
                 </tr>
             {% endfor %}
@@ -97,6 +104,7 @@
                     <th>Startup Sales</th>
                     <th>Startup Profit</th>
                     <th>Startup Debts</th>
+                    <th>Actions</th>
 
                 </tr>
             </thead>
@@ -110,6 +118,9 @@
                     <td>{{ startup.Sales }}</td>
                     <td>{{ startup.profit }}</td>
                     <td>{{ startup.debts }}</td>
+                    <td><a href="{% url 'deleteStartup' startup.id %}">Delete</a></td>
+                    <td><a href="{% url 'editStartup' startup.id %}">Edit</a></td>
+
                 </tr>
             {% endfor %}
             </tbody>

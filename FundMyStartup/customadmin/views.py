@@ -46,3 +46,66 @@ def feedbacklist(request):
 def adminLogout(request):
     auth.logout(request)
     return redirect('login')
+
+def deleteFeedback(request, id):
+    if request.user.is_superuser:
+        feedback.objects.filter(id=id).delete()
+        messages.success(request, 'Feedback deleted successfully')
+        return redirect('feedbacklist')
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')
+
+
+
+def deleteStartup(request, id):
+    if request.user.is_superuser:
+        startup.objects.filter(id=id).delete()
+        messages.success(request, 'Startup deleted successfully')
+        return redirect('adminDashboard')
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')
+
+def editStartup(request, id):
+    if request.user.is_superuser :
+        if request.method == 'POST':
+            name = request.POST['name']
+            description = request.POST['description']
+            image = request.FILES['image']
+            amount = request.POST['amount']
+            startup.objects.filter(id=id).update(name=name, description=description, image=image, amount=amount)
+            messages.success(request, 'Startup updated successfully')
+            return redirect('adminDashboard')
+        else:
+            startupl = startup.objects.get(id=id)
+            return render(request, 'editStartup.html', {'startup': startupl})
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')
+
+def editUser(request, id):
+    if request.user.is_superuser or id == request.user.id:
+        if request.method == 'POST':
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            email = request.POST['email']
+            User.objects.filter(id=id).update(first_name=first_name, last_name=last_name, email=email)
+            messages.success(request, 'User updated successfully')
+            return redirect('userList')
+        else:
+            user = User.objects.get(id=id)
+            return render(request, 'editUser.html', {'user': user})
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')
+
+
+def deleteUser(request, id):
+    if request.user.is_superuser:
+        User.objects.filter(id=id).delete()
+        messages.success(request, 'User deleted successfully')
+        return redirect('userList')
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')

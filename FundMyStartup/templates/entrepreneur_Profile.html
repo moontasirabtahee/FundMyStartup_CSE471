@@ -10,9 +10,6 @@
 
 <div class="banner">
     <a href="{% url 'entreprePro' %}">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact</a>
-    <a href="#">Profile</a>
     <a href="#">Message</a>
     <a href="{% url 'logout' %}">Log Out</a>
     <a href="{% url 'startup' %}">Create startup</a>
@@ -31,10 +28,7 @@
         <!-- Add notification content here -->
     </section>
 
-    <section class="message-notification">
-        <h2>Message Notifications</h2>
-        <!-- Add message notification content here -->
-    </section>
+
 
     <section class="startup-details">
         <h2>Startup Details</h2>
@@ -66,6 +60,9 @@
                 <h3>Debts : {{i.debts}}</h3>
             </div>
         </div>
+        <h3>
+        <a href="{% url 'editstart' %}">Edit</a>
+            </h3>
 <hr>
         <br>
         <hr>

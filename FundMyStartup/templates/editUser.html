@@ -1,0 +1,61 @@
+
+  <!DOCTYPE html>
+
+  {% load static %}
+  <html>
+  <head>
+      <title>Registration - Fund My Startup</title>
+      <link rel="stylesheet" type="text/css" href="{% static 'css/reg.css' %}">
+  </head>
+
+  <body>
+   {% if messages %}
+          {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+      {% endif %}
+      <div class="banner">
+      <a href="{% url 'index' %}">Home</a>
+      <a href="#">About Us</a>
+      <a href="{% url 'contact' %}">Contact</a>
+  </div>
+    <div class="registration-container">
+          <h1>Registration</h1>
+          <form action="" method="post">
+              {% csrf_token %}
+
+              <label for="fname">First Name: {{user.first_name}}</label>
+              <input type="text" id="fname" name="fname" value="{{user.first_name}}" required>
+
+              <label for="lname">Last Name: {{user.last_name}}</label>
+              <input type="text" id="lname" name="lname" value="{{user.last_name}}" required>
+
+              <label for="email">Email: {{user.email}}</label>
+              <input type="email" id="email" name="email" value="{{user.email}}" required>
+
+              <label for="phone">Phone: {{user.profile.phone}}</label>
+              <input type="tel" id="phone" name="phone" value="{{user.profile.phone}}" required>
+
+              <label for="address">Address: {{user.profile.address}}</label>
+              <input type="text" id="address" name="address" value="{{user.profile.address}}" required>
+
+              <label for="dob">Date of Birth: {{user.profile.dob}}</label>
+              <input type="date" id="dob" name="dob" value="{{user.profile.dob}}" required>
+
+              <label for="nid_number">NID Number: {{user.profile.nid_number}}</label>
+              <input type="text" id="nid_number" name="nid_number" value="{{user.profile.nid_number}}" required>
+
+              <label for="nid_image">NID Image:</label>
+              <input type="file" id="nid_image" name="nid_image" accept="image/*" required>
+
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required>
+
+              <label for="password2">Confirm Password:</label>
+              <input type="password" id="password2" name="password2" required>
+
+              <input type="submit" value="">
+
+          </form>
+
+      </div>
