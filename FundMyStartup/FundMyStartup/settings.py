@@ -76,6 +76,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'FundMyStartup.wsgi.application'
+ASGI_APPLICATION = 'FundMyStartup.asgi.application'
 
 
 # Database

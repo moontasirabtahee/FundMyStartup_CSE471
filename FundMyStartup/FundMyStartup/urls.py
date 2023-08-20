@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.urls import path,include
 from . import views
 
+
 urlpatterns = [
     path('dj_admin/', admin.site.urls),
     path('',views.index,name= 'index'),
@@ -29,6 +30,7 @@ urlpatterns = [
     path('dashboard/',include('dashboard.urls')),
     path('communication/',include('communication.urls')),
     path('admin',include('customadmin.urls')),
+
 
 
 

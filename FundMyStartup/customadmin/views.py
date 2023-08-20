@@ -18,6 +18,7 @@ def adminDashboard(request):
         feedbackl = feedback.objects.all()
         users = User.objects.all()
         startups = startup.objects.all()
+
         return render(request, 'adminDashboard.html', {'feedbackl': feedbackl, 'users': users , 'startups': startups})
     else:
         messages.error(request, 'You are not authorized to view this page')
