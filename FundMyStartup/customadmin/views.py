@@ -7,6 +7,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from FundMyStartup.models import feedback
 from entrepreneur.models import startup
+from communication.models import Room, Message
 
 
 def adminLogin(request):
@@ -18,8 +19,12 @@ def adminDashboard(request):
         feedbackl = feedback.objects.all()
         users = User.objects.all()
         startups = startup.objects.all()
+        rooms = Room.objects.all()
+        chats = Message.objects.all()
 
-        return render(request, 'adminDashboard.html', {'feedbackl': feedbackl, 'users': users , 'startups': startups})
+
+
+        return render(request, 'adminDashboard.html', {'feedbackl': feedbackl, 'users': users , 'startups': startups, "rooms": rooms , "chats": chats})
     else:
         messages.error(request, 'You are not authorized to view this page')
         return redirect('login')
@@ -32,6 +37,21 @@ def UserList(request):
         messages.error(request, 'You are not authorized to view this page')
         return redirect('login')
 
+def Rooms(request):
+    if request.user.is_superuser:
+        rooms = Room.objects.all()
+        return render(request, 'roomname.html', {'rooms':rooms})
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')
+
+def Messages(request):
+    if request.user.is_superuser:
+        chats = Message.objects.all()
+        return render(request, 'chat.html', {'chats': chats})
+    else:
+        messages.error(request, 'You are not authorized to view this page')
+        return redirect('login')
 
 def feedbacklist(request):
     if request.user.is_superuser:
@@ -109,3 +129,4 @@ def deleteUser(request, id):
     else:
         messages.error(request, 'You are not authorized to view this page')
         return redirect('login')
+

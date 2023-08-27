@@ -1,0 +1,25 @@
+
+        {% block chat%}
+
+<table>
+    <thead>
+        <tr>
+            <th>Value</th>
+            <th>User</th>
+            <th>Room</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for chat in chats %}
+        <tr>
+            <td>{{ chat.value }}</td>
+            <td>{{ chat.user }}</td>
+            <td>{{ chat.room }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        {% endblock %}

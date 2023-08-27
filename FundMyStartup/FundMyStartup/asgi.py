@@ -11,19 +11,14 @@ import os
 
 from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
-from channels.routing import ProtocolTypeRouter,URLRouter
+from channels.routing import ProtocolTypeRouter
 from channels.security.websocket import AllowedHostsOriginValidator
-from FundMyStartup.communication.routing import websocket_urlpatterns
+os.environ.setdefault('DJANGO_SETTINGS_MODULE' , 'FundMyStartup.settings')
+
 
 
 asgiapplication = get_asgi_application()
 
-application = ProtocolTypeRouter(
-    {
-        "http": asgiapplication,
-        "websocket" : AllowedHostsOriginValidator(
-            AuthMiddlewareStack(URLRouter(websocket_urlpatterns))
-        )
-    }
-)
-
+application = ProtocolTypeRouter({
+    'http' : get_asgi_application()
+})

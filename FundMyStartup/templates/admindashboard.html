@@ -118,14 +118,67 @@
                     <td>{{ startup.Sales }}</td>
                     <td>{{ startup.profit }}</td>
                     <td>{{ startup.debts }}</td>
-                    <td><a href="{% url 'deleteStartup' startup.id %}">Delete</a></td>
-                    <td><a href="{% url 'editStartup' startup.id %}">Edit</a></td>
+
 
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </section>
+
+
+    <section id="room">
+        <h2>Room</h2>
+
+        <table>
+    <thead>
+        <tr>
+            <th>RoomName</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for rooms in room %}
+        <tr>
+            <td>{{ rooms.name }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    </section>
+
+    <section id="Chat">
+        <h2>Chat</h2>
+
+        <table>
+    <thead>
+        <tr>
+            <th>Value</th>
+            <th>User</th>
+            <th>Room</th>
+
+    </thead>
+    <tbody>
+        {% for messages in message %}
+        <tr>
+            <td>{{ messages.value }}</td>
+            <td>{{ messages.user }}</td>
+            <td>{{ messages.room }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    </section>
+
+
+
+
+
+
 
 </main>
 

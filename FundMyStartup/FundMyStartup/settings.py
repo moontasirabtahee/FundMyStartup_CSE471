@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'FundMyStartup.wsgi.application'
+#WSGI_APPLICATION = 'FundMyStartup.wsgi.application'
 ASGI_APPLICATION = 'FundMyStartup.asgi.application'
 
 
