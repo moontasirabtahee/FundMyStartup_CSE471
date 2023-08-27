@@ -1,0 +1,22 @@
+
+        {% block roomname%}
+
+<table>
+    <thead>
+        <tr>
+            <th>Room</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr>
+            <td>{{ room.name }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        {% endblock %}
+
