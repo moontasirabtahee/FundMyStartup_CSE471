@@ -17,8 +17,8 @@ def investPro(request):
         invest = investedStartup.objects.create(user=user, startup=startupst, amount=amount)
         invest.save()
         print('invested')
-
-        return render(request, 'investorProfile.html')
+        startups = startup.objects.all()
+        return render(request, 'investorProfile.html',{'startups':startups})
     else:
         startups = startup.objects.all()
         return render(request, 'investorProfile.html', {'startups':startups})

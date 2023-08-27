@@ -13,11 +13,8 @@
         {% endfor %}
     {% endif %}
 <div class="banner">
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact</a>
-    <a href="#">Profile</a>
-    <a href="#">Message</a>
+    <a href="investor_Profile">Home</a>
+    <a href="{% url 'investor_Profile' %}">Profile</a>
     <a href="{% url 'logout' %}">Log Out</a>
 
 </div>

@@ -13,10 +13,7 @@
         {% endfor %}
     {% endif %}
 <div class="banner">
-    <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Contact</a>
-    <a href="#">Profile</a>
+    <a href="{% url 'investor_Profile' %}">Home</a>
     <a href="#">Message</a>
     <a href="{% url 'logout' %}">Log Out</a>
     <a href="{% url 'home' %}">Chat</a>
@@ -85,23 +82,6 @@
             <!-- Add message notification content here -->
         </section>
 
-        <section class="invested-startups">
-            <h2>Invested Startups</h2>
-            <div class="startup-box">
-                <h3>Startup Name 1</h3>
-                <p>Invested Money: $10000</p>
-                <p>Time: 12 months</p>
-                <p>Profit Rate: 10%</p>
-                <!-- Add graph here -->
-            </div>
-
-            <div class="startup-box">
-                <h3>Startup Name 2</h3>
-                <p>Invested Money: $5000</p>
-                <p>Time: 6 months</p>
-                <p>Profit Rate: 8%</p>
-                <!-- Add graph here -->
-            </div>
             <!-- Add more invested startups here -->
         </section>
     </div>
